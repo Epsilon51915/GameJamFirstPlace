@@ -51,10 +51,10 @@ void drawWorld(Game &game)
 {
     int col, line;
     col = 1;
-    for(int i = (game.player.xPos - 9); i < (game.player.xPos + 8); i++)
+    for(int i = (game.player.xPos - 9); i < (game.player.xPos + 10); i++)
     {
         line = 1;
-        for(int j = game.player.yPos - 8; j < game.player.yPos + 7; j++)
+        for(int j = game.player.yPos - 8; j < game.player.yPos + 11; j++)
         {
             if(i == game.player.xPos && j == game.player.yPos)
             {

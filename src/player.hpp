@@ -101,7 +101,7 @@ void displayInventory(const Player& player)
                 itemType = "WOOD";
                 break;
         }
-        std::cout << "Inventory Slot #" << i << ": " << player.inventory.items[i].quantity << " " << itemType << std::endl;
+        std::cout << "Inventory Slot #" << i+1 << ": " << player.inventory.items[i].quantity << " " << itemType << std::endl;
     }
 }
 
