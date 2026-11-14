@@ -3,6 +3,8 @@
 
 #include "player.hpp"
 #include "world.hpp"
+#include "SimplexNoise.h"
+#include <ctime>
 
 /*
 *
@@ -21,8 +23,78 @@ struct Game
 *   Setup Fcns
 *
 */
+
+void veinBuilder(Game &game, int x, int y, char build)
+{
+    int steps = 1;
+    int vel = std::rand() % 8;
+    while(steps > 0)
+    {
+        if(x < 1)
+        {
+            x = 2;
+            steps++;
+        }
+        if(y < 1)
+        {
+            y = 2;
+            steps++;
+        }
+        if(x > 198)
+        {
+            x = 197;
+            steps++;
+        }
+        if(y > 198)
+        {
+            y = 197;
+            steps++;
+        }
+        game.world.grid[x][y] = build;
+        game.world.grid[x+1][y] = build;
+        game.world.grid[x-1][y] = build;
+        game.world.grid[x][y+1] = build;
+        game.world.grid[x][y-1] = build;
+        switch(vel)
+        {
+            case 0:
+                y--;
+                break;
+            case 1:
+                y--;
+                x++;
+                break;
+            case 2:
+                x++;
+                break;
+            case 3:
+                x++;
+                y++;
+                break;
+            case 4:
+                y++;
+                break;
+            case 5:
+                y++;
+                x--;
+                break;
+            case 6:
+                x--;
+                break;
+            case 7:
+                x--;
+                y--;
+                break;
+        }
+        
+        
+        steps--;
+    }
+}
+
 void setupWorld(Game &game)
 {
+    srand(static_cast<unsigned int>(std::time(nullptr)));
     for(int i = 0; i < 200; i++)
     {
         for(int j = 0; j < 200; j++)
@@ -31,9 +103,21 @@ void setupWorld(Game &game)
         }
     }
 
-    game.world.grid[100][100] = '^';
-    game.world.grid[102][102] = '^';
-    game.world.grid[103][100] = '^';
+    for(int x = 0; x < 200; x++)
+    {
+        for(int y = 0; y < 200; y++)
+        {
+            if(x >=108 && x <= 112 && y >= 108 && y <= 112)
+            {
+                continue;
+            }
+            int random = rand() % 100;
+            if(random < 5)
+            {
+                veinBuilder(game, x, y, '^');
+            }
+        }
+    }
     game.world.grid[105][105] = 'T';
 }
 
