@@ -18,15 +18,15 @@ void drawTree(int x, int y)
     DrawText("^", x * 40, y * 40 + 20, 40, GREEN);   
 }
 
-void drawTimeMachine(){
-    DrawText("-", 500, 500, 40, BROWN);
-    DrawText("-", 510, 500, 40, BROWN);
+void drawTimeMachine(int x, int y){
+    DrawText("-", x * 40, y * 40, 40, BROWN);
+    DrawText("-", x * 40 + 10, y * 40, 40, BROWN);
 
-    DrawText("|", 500, 490, 40, BROWN);
-    DrawText("|", 510, 490, 40, BROWN);
+    DrawText("|", x * 40 + 5, y * 40 + 15, 40, BROWN);
+    DrawText("|", x * 40 + 15, y * 40 + 15, 40, BROWN);
 
-    DrawText("-", 500, 480, 40, BROWN);
-    DrawText("-", 510, 480, 40, BROWN);
+    DrawText("-", x * 40, y * 40 + 30, 40, BROWN);
+    DrawText("-", x * 40 + 10, y * 40 + 30, 40, BROWN);
 }
 
 void drawTile(char tile, int x, int y){
@@ -36,6 +36,8 @@ void drawTile(char tile, int x, int y){
         case '^':
             drawTree(x, y);
             break;
+        case 'T':
+            drawTimeMachine(x, y);
     }
 }
 

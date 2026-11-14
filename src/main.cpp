@@ -44,6 +44,7 @@ void setupWorld(Game &game)
     game.world.grid[10][10] = '^';
     game.world.grid[12][12] = '^';
     game.world.grid[13][10] = '^';
+    game.world.grid[2][2] = 'T';
 }
 
 void setupPlayer(Player &player){
