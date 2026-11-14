@@ -76,3 +76,10 @@ void drawWorld(Game &game)
         col++;
     }
 }
+
+void drawInventory(Player& player){
+    for(int i = 0; i < player.inventory.curSize; i++)
+    {
+        DrawText((getItemName(player.inventory.items[i].type) + " x" + std::to_string(player.inventory.items[i].quantity)).c_str(), 65, 75 + 60 * i, 50, WHITE);
+    }
+}
