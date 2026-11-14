@@ -16,6 +16,12 @@ struct Item
     int quantity;
 };
 
+struct Inventory
+{
+    int curSize = 0;
+    Item items[10];
+};
+
 struct Player
 {
     int health;
@@ -23,7 +29,62 @@ struct Player
     char drawChar;
     int xPos;
     int yPos;
-    Item inventory[10];
+    Inventory inventory;
 };
+
+bool lookForItem(const Player &player, const Item &item)
+{
+    for(int i = 0; i < 10; i++)
+    {
+        if(player.inventory.items[i].type == item.type)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+void editInventory(Player &player, const Item &item)
+{
+    int ind;
+    for(int i = 0; i < 10; i++)
+    {
+        if(player.inventory.items[i].type == item.type)
+        {
+            ind = i;
+            break;
+        }
+    }
+    player.inventory.items[ind].quantity += item.quantity;
+}
+
+bool addItemToInventory(Player& player, Item item)
+{
+    // Item itemToAdd;
+    // itemToAdd.quantity = item.quantity;
+    // itemToAdd.type = item.type;
+    if(player.inventory.curSize < 10)
+    {
+        player.inventory.items[player.inventory.curSize] = item;
+        player.inventory.curSize++;
+        return true;
+    }
+    return false;
+}
+
+void displayInventory(const Player& player)
+{
+    for(int i = 0; i < player.inventory.curSize; i++)
+    {
+        std::string itemType;
+        switch(player.inventory.items[i].type)
+        {
+            case WOOD:
+                itemType = "WOOD";
+                break;
+        }
+        std::cout << "Inventory Slot #1: " << player.inventory.items[i].quantity << " " << itemType << std::endl;
+    }
+}
 
 #endif

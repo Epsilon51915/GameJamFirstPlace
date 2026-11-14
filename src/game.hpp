@@ -43,6 +43,32 @@ void checkCollisions(Player& player, World& world, char dir){
         case '\0':
             return;
         // add more case statements here for objects you want to not be collidable
+        case '^':
+            Item wood;
+            wood.type = WOOD;
+            wood.quantity = 3;
+            if(lookForItem(player, wood))
+            {
+                editInventory(player, wood);
+            }
+            else
+            {
+                if(!addItemToInventory(player, wood))
+                {
+                    std::cout << "No space!" << std::endl;
+                }
+            }
+            if(dir == 'u'){
+                player.yPos++;
+            } else if(dir == 'd'){
+                player.yPos--;
+            } else if(dir == 'r'){
+                player.xPos--;
+            } else if(dir == 'l'){
+                player.xPos++;
+            }
+            break;
+
         default: // any collidable object
             if(dir == 'u'){
                 player.yPos++;
@@ -69,6 +95,9 @@ void movement(Player& player, World& world){
     } else if(raylib::Keyboard::IsKeyPressed(KEY_A) && player.xPos != 0){
         player.xPos--;
         checkCollisions(player, world, 'l');
+    } else if(raylib::Keyboard::IsKeyPressed(KEY_I))
+    {
+        displayInventory(player);
     }
 }
 
