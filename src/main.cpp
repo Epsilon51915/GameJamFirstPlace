@@ -30,15 +30,16 @@ enum Scenes
     CREDIT
 };
 
-void drawCenteredText(std::string text, int size, int windowW, int windowH)
+void setup(Game &game)
 {
-    int textW = MeasureText(text.c_str(), size);
-    int textX = (windowW / 2) - (textW / 2);
-    int textY = (windowH / 2) - (size / 2);
-    DrawText(text.c_str(), textX, textY, 35, RED);
+    for(int i = 0; i < 200; i++)
+    {
+        for(int j = 0; j < 200; j++)
+        {
+            game.world.grid[i][j] = '\0';
+        }
+    }
 }
-
-
 
 int main()
 {
@@ -48,7 +49,8 @@ int main()
 
     Scenes curScene = SPLASH;
     Game game;
-    bool tree = true;
+    setup(game);
+
     while(!window.ShouldClose())
     {
         switch(curScene)
@@ -72,14 +74,6 @@ int main()
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = GAME;
-                    }
-                    if(raylib::Keyboard::IsKeyPressed(KEY_T))
-                    {
-                        tree = false;
-                    }
-                    if(tree)
-                    {
-                        drawTree();
                     }
                 } 
                 break;
