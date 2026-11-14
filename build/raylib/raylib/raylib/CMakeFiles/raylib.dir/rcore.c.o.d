@@ -1,11 +1,11 @@
 raylib/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rcore.c \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rcore.c \
  /usr/include/stdc-predef.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/raylib.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdbool.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/config.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/utils.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/raylib.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdbool.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/config.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/utils.h \
  /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -15,7 +15,7 @@ raylib/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
@@ -56,28 +56,27 @@ raylib/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
- /usr/include/x86_64-linux-gnu/bits/mathcalls-macros.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rlgl.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/glad.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h /usr/include/stdint.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rlgl.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/glad.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/raymath.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rgestures.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rcamera.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/msf_gif.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/emmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/mm_malloc.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/sinfl.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/raymath.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rgestures.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/rcamera.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/msf_gif.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/mm_malloc.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/sinfl.h \
  /usr/include/assert.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/sdefl.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/sdefl.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
@@ -86,7 +85,7 @@ raylib/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/rprand.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/rprand.h \
  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
  /usr/include/x86_64-linux-gnu/bits/environments.h \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
@@ -96,12 +95,12 @@ raylib/raylib/raylib/CMakeFiles/raylib.dir/rcore.c.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_stat.h /usr/include/dirent.h \
  /usr/include/x86_64-linux-gnu/bits/dirent.h \
  /usr/include/x86_64-linux-gnu/bits/dirent_ext.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/platforms/rcore_desktop_glfw.c \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/glfw/include/GLFW/glfw3.h \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/platforms/rcore_desktop_glfw.c \
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/glfw/include/GLFW/glfw3.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h \
  /usr/include/x86_64-linux-gnu/sys/select.h \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
- /home/kevin/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/glfw/include/GLFW/glfw3native.h
+ /home/tyler/Coding/GameJamFirstPlace/raylib-cpp/raylib/src/external/glfw/include/GLFW/glfw3native.h

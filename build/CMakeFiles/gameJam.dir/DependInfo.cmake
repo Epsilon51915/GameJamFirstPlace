@@ -8,9 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kevin/Coding/GameJamFirstPlace/external/SimplexNoise/src/SimplexNoise.cpp" "CMakeFiles/gameJam.dir/external/SimplexNoise/src/SimplexNoise.cpp.o" "gcc" "CMakeFiles/gameJam.dir/external/SimplexNoise/src/SimplexNoise.cpp.o.d"
-  "/home/kevin/Coding/GameJamFirstPlace/src/main.cpp" "CMakeFiles/gameJam.dir/src/main.cpp.o" "gcc" "CMakeFiles/gameJam.dir/src/main.cpp.o.d"
-  "" "gameJam" "gcc" "CMakeFiles/gameJam.dir/link.d"
+  "/home/tyler/Coding/GameJamFirstPlace/external/SimplexNoise/src/SimplexNoise.cpp" "CMakeFiles/gameJam.dir/external/SimplexNoise/src/SimplexNoise.cpp.o" "gcc" "CMakeFiles/gameJam.dir/external/SimplexNoise/src/SimplexNoise.cpp.o.d"
+  "/home/tyler/Coding/GameJamFirstPlace/src/main.cpp" "CMakeFiles/gameJam.dir/src/main.cpp.o" "gcc" "CMakeFiles/gameJam.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -114,7 +114,9 @@ void setupWorld(Game &game)
             int random = rand() % 100;
             if(random < 5)
             {
-                veinBuilder(game, x, y, '^');
+                random = rand() % 2;
+                if(random == 0){veinBuilder(game, x, y, '^');}
+                else if(random == 1){veinBuilder(game, x, y, 'I');}
             }
         }
     }

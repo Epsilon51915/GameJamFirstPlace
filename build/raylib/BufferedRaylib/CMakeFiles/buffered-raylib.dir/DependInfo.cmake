@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/kevin/Coding/GameJamFirstPlace/raylib-cpp/BufferedRaylib/src/BufferedRaylib.cpp" "raylib/BufferedRaylib/CMakeFiles/buffered-raylib.dir/src/BufferedRaylib.cpp.o" "gcc" "raylib/BufferedRaylib/CMakeFiles/buffered-raylib.dir/src/BufferedRaylib.cpp.o.d"
+  "/home/tyler/Coding/GameJamFirstPlace/raylib-cpp/BufferedRaylib/src/BufferedRaylib.cpp" "raylib/BufferedRaylib/CMakeFiles/buffered-raylib.dir/src/BufferedRaylib.cpp.o" "gcc" "raylib/BufferedRaylib/CMakeFiles/buffered-raylib.dir/src/BufferedRaylib.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
