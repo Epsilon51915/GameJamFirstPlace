@@ -7,5 +7,7 @@ set(CMAKE_CXX_STANDARD 20)
 #target_include_directories(asio INTERFACE ../asio/include)
 #target_compile_definitions(asio INTERFACE ASIO_STANDALONE)
 
-add_executable(gameJam src/main.cpp)
+add_executable(gameJam 
+    src/main.cpp
+    src/player.hpp)
 #target_link_libraries(gameJam asio)
