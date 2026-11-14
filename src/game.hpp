@@ -37,6 +37,7 @@ void setupWorld(Game &game)
     game.world.grid[105][105] = 'T';
 }
 
+
 void setupPlayer(Player &player){
     player.xPos = 110;
     player.yPos = 110;
@@ -75,7 +76,7 @@ void checkCollisions(Player& player, World& world, char dir){
             return;
         // add more case statements here for objects you want to not be collidable
         default: // any collidable object
-            mineItem(world.grid[player.posX][player.posY]);
+            mineItem(world.grid[player.xPos][player.yPos]);
             if(dir == 'u'){
                 player.yPos++;
             } else if(dir == 'd'){
