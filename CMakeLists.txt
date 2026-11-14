@@ -6,7 +6,8 @@ add_executable(gameJam
     src/main.cpp
     src/player.hpp
     src/world.hpp
-    src/game.hpp)
+    src/game.hpp
+    src/draw.hpp)
 #include(assets/includeable.cmake)
 
 file(GLOB sources "src/*.cpp" "src/*.c")
