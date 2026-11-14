@@ -19,7 +19,6 @@
 #include <iostream>
 #include <map>
 
-#include "SimplexNoise.h"
 #include "draw.hpp"
 #include "game.hpp"
 
