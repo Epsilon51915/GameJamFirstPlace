@@ -19,8 +19,7 @@
 #include <iostream>
 #include <map>
 
-#include "player.hpp"
-#include "world.hpp"
+#include "game.hpp"
 
 enum Scenes
 {
@@ -30,6 +29,14 @@ enum Scenes
     CREDIT
 };
 
+void drawCenteredText(std::string text, int size, int windowW, int windowH)
+{
+    int textW = MeasureText(text.c_str(), size);
+    int textX = (windowW / 2) - (textW / 2);
+    int textY = (windowH / 2) - (size / 2);
+    DrawText(text.c_str(), textX, textY, 35, RED);
+}
+
 int main()
 {
     raylib::Window window(800, 800, "GameJamFirstPlace");
@@ -37,6 +44,7 @@ int main()
     window.SetState(FLAG_WINDOW_RESIZABLE);
 
     Scenes curScene = SPLASH;
+    Game game;
 
     while(!window.ShouldClose())
     {
@@ -50,6 +58,7 @@ int main()
                     {
                         curScene = TITLE;
                     }
+                    drawCenteredText("Game Jam First Place Co", 40, window.GetWidth(), window.GetHeight());
                 } 
                 break;
 
@@ -85,9 +94,7 @@ int main()
                     }
                 } 
                 break;
-        }
-
-        
+        }        
         window.EndDrawing();
     }
     return 0;

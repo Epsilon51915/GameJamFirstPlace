@@ -1,4 +1,4 @@
 struct World
 {
-    char grid[1000][1000];
+    char grid[200][200];
 };
