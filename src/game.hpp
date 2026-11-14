@@ -3,6 +3,8 @@
 
 #include "player.hpp"
 #include "world.hpp"
+#include "SimplexNoise.h"
+#include <ctime>
 
 /*
 *
@@ -23,17 +25,28 @@ struct Game
 */
 void setupWorld(Game &game)
 {
+    //srand(static_cast<unsigned int>(std::time(nullptr)));
+
     for(int i = 0; i < 200; i++)
     {
         for(int j = 0; j < 200; j++)
         {
-            game.world.grid[i][j] = '\0';
+            if(j >=109 && j <= 111 && i >= 109 && i <= 111)
+            {
+                game.world.grid[i][j] = '\0';
+                continue;
+            }
+            float noise = SimplexNoise::noise(i, j);
+            if(noise < 0.5)
+            {
+                game.world.grid[i][j] = '\0';
+            }
+            else if(noise < 1)
+            {
+                game.world.grid[i][j] = '^';
+            }
         }
     }
-
-    game.world.grid[100][100] = '^';
-    game.world.grid[102][102] = '^';
-    game.world.grid[103][100] = '^';
     game.world.grid[105][105] = 'T';
 }
 
@@ -46,7 +59,7 @@ void setupPlayer(Player &player){
     player.colB = 255;
 }
 
-void mineItem(char it){
+void mineItem(char it, Player& player, World &world){
     switch(it){
         case '^':
             Item wood;
@@ -75,7 +88,7 @@ void checkCollisions(Player& player, World& world, char dir){
             return;
         // add more case statements here for objects you want to not be collidable
         default: // any collidable object
-            mineItem(world.grid[player.posX][player.posY]);
+            mineItem(world.grid[player.xPos][player.yPos], player, world);
             if(dir == 'u'){
                 player.yPos++;
             } else if(dir == 'd'){
