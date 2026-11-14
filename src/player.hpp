@@ -1,3 +1,6 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
 struct Player
 {
     int health;
@@ -6,3 +9,5 @@ struct Player
     int xPos;
     int yPos;
 };
+
+#endif
