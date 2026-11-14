@@ -72,10 +72,15 @@ int main()
                 window.BeginDrawing(); 
                 {
                     window.ClearBackground(raylib::Color::Black());
+
                     drawWorld(game);
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = CREDIT;
+                    }
+
+                    if(raylib::Keyboard::IsKeyDown(KEY_TAB)){
+                        drawInventory(game.player);
                     }
                 } 
                 movement(game.player, game.world);

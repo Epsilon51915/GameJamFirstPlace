@@ -18,7 +18,6 @@ void drawTree(int x, int y)
     DrawText("^", x * 40, y * 40 + 20, 40, GREEN);   
 }
 
-
 void drawTimeMachine(int x, int y){
     DrawText("-", x * 40, y * 40, 40, BROWN);
     DrawText("-", x * 40 + 10, y * 40, 40, BROWN);
@@ -28,6 +27,10 @@ void drawTimeMachine(int x, int y){
 
     DrawText("-", x * 40, y * 40 + 30, 40, BROWN);
     DrawText("-", x * 40 + 10, y * 40 + 30, 40, BROWN);
+}
+
+void drawIron(int x, int y){
+    DrawText("I", x * 40, y * 40, 40, GRAY);
 }
 
 void drawTile(char tile, int x, int y){
@@ -40,6 +43,9 @@ void drawTile(char tile, int x, int y){
             break;
         case 'T':
             drawTimeMachine(x, y);
+            break;
+        case 'I':
+            drawIron(x, y);
             break;
     }
 }
@@ -68,5 +74,12 @@ void drawWorld(Game &game)
             line++;
         }
         col++;
+    }
+}
+
+void drawInventory(Player& player){
+    for(int i = 0; i < player.inventory.curSize; i++)
+    {
+        DrawText((getItemName(player.inventory.items[i].type) + " x" + std::to_string(player.inventory.items[i].quantity)).c_str(), 65, 75 + 60 * i, 50, WHITE);
     }
 }

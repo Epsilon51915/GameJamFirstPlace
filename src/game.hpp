@@ -121,7 +121,6 @@ void setupWorld(Game &game)
     game.world.grid[105][105] = 'T';
 }
 
-
 void setupPlayer(Player &player){
     player.xPos = 110;
     player.yPos = 110;

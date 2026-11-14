@@ -49,6 +49,23 @@ struct Player
 *
 */
 
+std::string getItemName(ItemType type){
+    switch(type){
+        case WOOD:
+            return "Wood";
+        case IRON:
+            return "Iron";
+        case LEAF:
+            return "Leaf";
+        case SAP:
+            return "Sap";
+        case STICK:
+            return "Stick";
+        default:
+            return "NULL";
+    }
+}
+
 // If the item is in the inventory, return true
 bool lookForItem(const Player &player, const Item &item)
 {
