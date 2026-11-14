@@ -1,0 +1,108 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+/*
+*
+*   Inventory BS
+*
+*/
+enum ItemType
+{
+    IRON = 0,
+    WOOD,
+    LEAF,
+    SAP,
+    STICK
+};
+
+struct Item
+{
+    ItemType type;
+    int quantity;
+};
+
+struct Inventory
+{
+    int curSize = 0;
+    Item items[10];
+};
+
+/*
+*
+*   Base Player Struct
+*
+*/
+
+struct Player
+{
+    int health;
+    int colR, colG, colB;
+    char drawChar;
+    int xPos;
+    int yPos;
+    Inventory inventory;
+};
+
+/*
+*
+*   Inventory Management Functions
+*
+*/
+
+// If the item is in the inventory, return true
+bool lookForItem(const Player &player, const Item &item)
+{
+    for(int i = 0; i < 10; i++)
+    {
+        if(player.inventory.items[i].type == item.type)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Change quantity of a specific item in the inventory
+void editInventory(Player &player, const Item &item)
+{
+    int ind;
+    for(int i = 0; i < 10; i++)
+    {
+        if(player.inventory.items[i].type == item.type)
+        {
+            ind = i;
+            break;
+        }
+    }
+    player.inventory.items[ind].quantity += item.quantity;
+}
+
+// Add an item to the inventory that does not currently exist, IF there is space in the inventory (current max size is 10)
+bool addItemToInventory(Player& player, Item item)
+{
+    if(player.inventory.curSize < 10)
+    {
+        player.inventory.items[player.inventory.curSize] = item;
+        player.inventory.curSize++;
+        return true;
+    }
+    return false;
+}
+
+// Display each inventory slot, including the quanitty of items in that slot, as well as what the item is.
+void displayInventory(const Player& player)
+{
+    for(int i = 0; i < player.inventory.curSize; i++)
+    {
+        std::string itemType;
+        switch(player.inventory.items[i].type)
+        {
+            case WOOD:
+                itemType = "WOOD";
+                break;
+        }
+        std::cout << "Inventory Slot #" << i+1 << ": " << player.inventory.items[i].quantity << " " << itemType << std::endl;
+    }
+}
+
+#endif

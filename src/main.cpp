@@ -19,19 +19,81 @@
 #include <iostream>
 #include <map>
 
+#include "SimplexNoise.h"
+#include "draw.hpp"
+#include "game.hpp"
+
+enum Scenes
+{
+    SPLASH = 0,
+    TITLE,
+    GAME,
+    CREDIT
+};
+
 int main()
 {
-    raylib::Window window(800, 800, "As8");
+    raylib::Window window(800, 800, "GameJamFirstPlace");
     window.SetTargetFPS(60);
     window.SetState(FLAG_WINDOW_RESIZABLE);
 
-    while(!window.ShouldClose()){
-        window.BeginDrawing(); {
-            window.ClearBackground(raylib::Color::Gray());
-        } window.EndDrawing();
+    Scenes curScene = SPLASH;
+    Game game;
+    setupPlayer(game.player);
+    setupWorld(game);
+
+    while(!window.ShouldClose())
+    {
+        switch(curScene)
+        {
+            case SPLASH:
+                window.BeginDrawing(); 
+                {
+                    window.ClearBackground(raylib::Color::White());
+                    if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
+                    {
+                        curScene = TITLE;
+                    }
+                    drawCenteredText("Game Jam First Place Co", 40, window.GetWidth(), window.GetHeight());
+                } 
+                break;
+
+            case TITLE:
+                window.BeginDrawing(); 
+                {
+                    window.ClearBackground(raylib::Color::DarkGray());
+                    if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
+                    {
+                        curScene = GAME;
+                    }
+                } 
+                break;
+
+            case GAME:
+                window.BeginDrawing(); 
+                {
+                    window.ClearBackground(raylib::Color::Black());
+                    drawWorld(game);
+                    if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
+                    {
+                        curScene = CREDIT;
+                    }
+                } 
+                movement(game.player, game.world);
+                break;
+
+            case CREDIT:
+                window.BeginDrawing(); 
+                {
+                    window.ClearBackground(raylib::Color::Blue());
+                    if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
+                    {
+                        curScene = GAME;
+                    }
+                } 
+                break;
+        }        
+        window.EndDrawing();
     }
-
-    std::cout << "Hello GameJamFirstPlace!" << std::endl;
-
     return 0;
 }
