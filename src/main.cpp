@@ -19,6 +19,7 @@
 #include <iostream>
 #include <map>
 
+#include "draw.hpp"
 #include "game.hpp"
 
 enum Scenes
@@ -37,6 +38,8 @@ void drawCenteredText(std::string text, int size, int windowW, int windowH)
     DrawText(text.c_str(), textX, textY, 35, RED);
 }
 
+
+
 int main()
 {
     raylib::Window window(800, 800, "GameJamFirstPlace");
@@ -45,7 +48,7 @@ int main()
 
     Scenes curScene = SPLASH;
     Game game;
-
+    bool tree = true;
     while(!window.ShouldClose())
     {
         switch(curScene)
@@ -69,6 +72,14 @@ int main()
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = GAME;
+                    }
+                    if(raylib::Keyboard::IsKeyPressed(KEY_T))
+                    {
+                        tree = false;
+                    }
+                    if(tree)
+                    {
+                        drawTree();
                     }
                 } 
                 break;
