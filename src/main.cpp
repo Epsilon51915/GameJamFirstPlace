@@ -61,6 +61,7 @@ int main()
                 window.BeginDrawing(); 
                 {
                     window.ClearBackground(raylib::Color::DarkGray());
+                    drawTitle();
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = GAME;
