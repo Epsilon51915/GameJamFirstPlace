@@ -4,6 +4,11 @@
 #include "player.hpp"
 #include "world.hpp"
 
+/*
+*
+*   Game Struct <Could be made into a class?>
+*
+*/
 struct Game
 {
     Player player;
@@ -11,6 +16,11 @@ struct Game
     int curWorldNum = 0;
 };
 
+/*
+*
+*   Setup Fcns
+*
+*/
 void setupWorld(Game &game)
 {
     for(int i = 0; i < 200; i++)
@@ -35,6 +45,7 @@ void setupPlayer(Player &player){
     player.colG = 255;
     player.colB = 255;
 }
+
 
 void checkCollisions(Player& player, World& world, char dir){
     char tile = world.grid[player.xPos][player.yPos];

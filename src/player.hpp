@@ -1,6 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+/*
+*
+*   Inventory BS
+*
+*/
 enum ItemType
 {
     IRON = 0,
@@ -22,6 +27,12 @@ struct Inventory
     Item items[10];
 };
 
+/*
+*
+*   Base Player Struct
+*
+*/
+
 struct Player
 {
     int health;
@@ -32,6 +43,13 @@ struct Player
     Inventory inventory;
 };
 
+/*
+*
+*   Inventory Management Functions
+*
+*/
+
+// If the item is in the inventory, return true
 bool lookForItem(const Player &player, const Item &item)
 {
     for(int i = 0; i < 10; i++)
@@ -44,6 +62,7 @@ bool lookForItem(const Player &player, const Item &item)
     return false;
 }
 
+// Change quantity of a specific item in the inventory
 void editInventory(Player &player, const Item &item)
 {
     int ind;
@@ -58,11 +77,9 @@ void editInventory(Player &player, const Item &item)
     player.inventory.items[ind].quantity += item.quantity;
 }
 
+// Add an item to the inventory that does not currently exist, IF there is space in the inventory (current max size is 10)
 bool addItemToInventory(Player& player, Item item)
 {
-    // Item itemToAdd;
-    // itemToAdd.quantity = item.quantity;
-    // itemToAdd.type = item.type;
     if(player.inventory.curSize < 10)
     {
         player.inventory.items[player.inventory.curSize] = item;
@@ -72,6 +89,7 @@ bool addItemToInventory(Player& player, Item item)
     return false;
 }
 
+// Display each inventory slot, including the quanitty of items in that slot, as well as what the item is.
 void displayInventory(const Player& player)
 {
     for(int i = 0; i < player.inventory.curSize; i++)
@@ -83,7 +101,7 @@ void displayInventory(const Player& player)
                 itemType = "WOOD";
                 break;
         }
-        std::cout << "Inventory Slot #1: " << player.inventory.items[i].quantity << " " << itemType << std::endl;
+        std::cout << "Inventory Slot #" << i << ": " << player.inventory.items[i].quantity << " " << itemType << std::endl;
     }
 }
 

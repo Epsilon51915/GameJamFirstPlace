@@ -1,6 +1,13 @@
 enum class OreType {
 	Iron,
-	Aluminum
+	Aluminum,
+	Carbon,
+	Platinum,
+	Etherium,
+	SpaceTime,
+	Titanium,
+	Tungsten,
+	Oconnium
 };
 
 struct Ore {
