@@ -40,15 +40,15 @@ void setupWorld(Game &game)
         }
     }
 
-    game.world.grid[10][10] = '^';
-    game.world.grid[12][12] = '^';
-    game.world.grid[13][10] = '^';
-    game.world.grid[2][2] = 'T';
+    game.world.grid[100][100] = '^';
+    game.world.grid[102][102] = '^';
+    game.world.grid[103][100] = '^';
+    game.world.grid[105][105] = 'T';
 }
 
 void setupPlayer(Player &player){
-    player.xPos = 10;
-    player.yPos = 11;
+    player.xPos = 110;
+    player.yPos = 110;
     player.health = 10;
     player.colR = 255;
     player.colG = 255;
@@ -140,7 +140,6 @@ int main()
                     }
                 } 
                 movement(game.player, game.world);
-                std::cout << game.player.xPos << " " << game.player.yPos << std::endl;
                 break;
 
             case CREDIT:

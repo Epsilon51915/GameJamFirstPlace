@@ -32,22 +32,19 @@ void drawTimeMachine(int x, int y){
 void drawTile(char tile, int x, int y){
     switch(tile){
         case '\0':
+            DrawRectangle(x * 40, y * 40, 20, 20, {112, 31, 126, 100}); 
             break;
         case '^':
             drawTree(x, y);
-            std::cout << "DrawTree" << std::endl;
             break;
         case 'T':
             drawTimeMachine(x, y);
-            std::cout << "DrawTM" << std::endl;
             break;
     }
 }
 
 void drawPlayer(int row, int col){
     DrawText("#", col * 40, row * 40, 40, WHITE);
-
-                std::cout << "DrawPlayer" << std::endl;
 }
 
 void drawWorld(Game &game)
@@ -65,8 +62,7 @@ void drawWorld(Game &game)
             }
             else
             {   
-                char t = game.world.grid[i][j];
-                drawTile(t, col, line);
+                drawTile(game.world.grid[i][j], col, line);
             }
             line++;
         }
