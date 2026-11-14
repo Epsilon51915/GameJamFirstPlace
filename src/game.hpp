@@ -5,4 +5,5 @@ struct Game
 {
     Player player;
     World world;
+    int curWorldNum = 0;
 };
