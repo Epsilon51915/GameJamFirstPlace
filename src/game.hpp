@@ -46,14 +46,8 @@ void setupPlayer(Player &player){
     player.colB = 255;
 }
 
-
-void checkCollisions(Player& player, World& world, char dir){
-    char tile = world.grid[player.xPos][player.yPos];
-
-    switch(tile){
-        case '\0':
-            return;
-        // add more case statements here for objects you want to not be collidable
+void mineItem(char it){
+    switch(it){
         case '^':
             Item wood;
             wood.type = WOOD;
@@ -69,18 +63,19 @@ void checkCollisions(Player& player, World& world, char dir){
                     std::cout << "No space!" << std::endl;
                 }
             }
-            if(dir == 'u'){
-                player.yPos++;
-            } else if(dir == 'd'){
-                player.yPos--;
-            } else if(dir == 'r'){
-                player.xPos--;
-            } else if(dir == 'l'){
-                player.xPos++;
-            }
             break;
+    }
+}
 
+void checkCollisions(Player& player, World& world, char dir){
+    char tile = world.grid[player.xPos][player.yPos];
+
+    switch(tile){
+        case '\0':
+            return;
+        // add more case statements here for objects you want to not be collidable
         default: // any collidable object
+            mineItem(world.grid[player.posX][player.posY]);
             if(dir == 'u'){
                 player.yPos++;
             } else if(dir == 'd'){
