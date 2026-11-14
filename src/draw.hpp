@@ -18,6 +18,7 @@ void drawTree(int x, int y)
     DrawText("^", x * 40, y * 40 + 20, 40, GREEN);   
 }
 
+
 void drawTimeMachine(int x, int y){
     DrawText("-", x * 40, y * 40, 40, BROWN);
     DrawText("-", x * 40 + 10, y * 40, 40, BROWN);
