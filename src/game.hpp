@@ -26,7 +26,7 @@ struct Game
 
 void veinBuilder(Game &game, int x, int y, char build)
 {
-    int steps = 2;
+    int steps = 1;
     int vel = std::rand() % 8;
     while(steps > 0)
     {
@@ -95,34 +95,26 @@ void veinBuilder(Game &game, int x, int y, char build)
 void setupWorld(Game &game)
 {
     srand(static_cast<unsigned int>(std::time(nullptr)));
-    int offset = std::rand() % 1000;
     for(int i = 0; i < 200; i++)
     {
         for(int j = 0; j < 200; j++)
         {
-            if(j >=109 && j <= 111 && i >= 109 && i <= 111)
+            game.world.grid[i][j] = '\0';
+        }
+    }
+
+    for(int x = 0; x < 200; x++)
+    {
+        for(int y = 0; y < 200; y++)
+        {
+            if(x >=108 && x <= 112 && y >= 108 && y <= 112)
             {
-                game.world.grid[i][j] = '\0';
                 continue;
             }
-            // float noise = SimplexNoise::noise((i + offset), (j + offset));
-            // if(noise < 0.5)
-            // {
-            //     game.world.grid[i][j] = '\0';
-            // }
-            // else if(noise < 1)
-            // {
-            //     game.world.grid[i][j] = '^';
-            // }
-
             int random = rand() % 100;
             if(random < 5)
             {
-                veinBuilder(game, i, j, '^');
-            }
-            else
-            {
-                game.world.grid[i][j] = '\0';
+                veinBuilder(game, x, y, '^');
             }
         }
     }
