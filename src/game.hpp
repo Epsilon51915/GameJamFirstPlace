@@ -47,7 +47,7 @@ void setupPlayer(Player &player){
     player.colB = 255;
 }
 
-void mineItem(char it){
+void mineItem(Player &player, char it){
     switch(it){
         case '^':
             Item wood;
@@ -76,7 +76,7 @@ void checkCollisions(Player& player, World& world, char dir){
             return;
         // add more case statements here for objects you want to not be collidable
         default: // any collidable object
-            mineItem(world.grid[player.xPos][player.yPos]);
+            mineItem(player, world.grid[player.xPos][player.yPos]);
             if(dir == 'u'){
                 player.yPos++;
             } else if(dir == 'd'){
