@@ -25,8 +25,8 @@ struct Game
 */
 void setupWorld(Game &game)
 {
-    //srand(static_cast<unsigned int>(std::time(nullptr)));
-
+    srand(static_cast<unsigned int>(std::time(nullptr)));
+    int offset = std::rand() % 1000;
     for(int i = 0; i < 200; i++)
     {
         for(int j = 0; j < 200; j++)
@@ -36,7 +36,7 @@ void setupWorld(Game &game)
                 game.world.grid[i][j] = '\0';
                 continue;
             }
-            float noise = SimplexNoise::noise(i, j);
+            float noise = SimplexNoise::noise((i + offset), (j + offset));
             if(noise < 0.5)
             {
                 game.world.grid[i][j] = '\0';
