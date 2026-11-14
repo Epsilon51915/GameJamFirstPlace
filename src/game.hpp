@@ -1,3 +1,6 @@
+#ifndef GAME_HPP
+#define GAME_HPP
+
 #include "player.hpp"
 #include "world.hpp"
 
@@ -7,3 +10,5 @@ struct Game
     World world;
     int curWorldNum = 0;
 };
+
+#endif

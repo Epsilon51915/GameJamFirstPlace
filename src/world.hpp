@@ -1,3 +1,6 @@
+#ifndef WORLD_HPP
+#define WORLD_HPP
+
 struct World
 {
     char grid[200][200]; // \0 for void, I for iron, M for machine, 
@@ -7,3 +10,5 @@ struct World
     char past4[200][200];
     char past5[200][200];
 };
+
+#endif

@@ -21,7 +21,6 @@
 
 #include "draw.hpp"
 #include "game.hpp"
-#include "player.hpp"
 
 enum Scenes
 {
@@ -48,8 +47,8 @@ void setupWorld(Game &game)
 }
 
 void setupPlayer(Player &player){
-    player.xPos = 0;
-    player.yPos = 0;
+    player.xPos = 10;
+    player.yPos = 11;
     player.health = 10;
     player.colR = 255;
     player.colG = 255;
@@ -100,8 +99,7 @@ int main()
 
     Scenes curScene = SPLASH;
     Game game;
-    Player player;
-    setupPlayer(player);
+    setupPlayer(game.player);
     setupWorld(game);
 
     while(!window.ShouldClose())
@@ -135,22 +133,14 @@ int main()
                 window.BeginDrawing(); 
                 {
                     window.ClearBackground(raylib::Color::Black());
-
-                    for(int i = 0; i < 200; i++){
-                        for(int j = 0; j < 200; j++){
-                            drawTile(game.world.grid[i][j], i, j);
-                        }
-                    }
-                    drawPlayer(player);
-                    
+                    drawWorld(game);
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = CREDIT;
                     }
                 } 
-
-                movement(player, game.world);
-
+                movement(game.player, game.world);
+                std::cout << game.player.xPos << " " << game.player.yPos << std::endl;
                 break;
 
             case CREDIT:

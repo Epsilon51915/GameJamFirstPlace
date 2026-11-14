@@ -1,4 +1,4 @@
-#include "player.hpp"
+#include "game.hpp"
 
 //DrawTextPro(GetFontDefault(), "/", {200, 200}, {0, 0}, (float)rot, 40, 0, RED);
 
@@ -35,12 +35,41 @@ void drawTile(char tile, int x, int y){
             break;
         case '^':
             drawTree(x, y);
+            std::cout << "DrawTree" << std::endl;
             break;
         case 'T':
             drawTimeMachine(x, y);
+            std::cout << "DrawTM" << std::endl;
+            break;
     }
 }
 
-void drawPlayer(Player &player){
-    DrawText("#", player.xPos * 40, player.yPos * 40, 40, {player.colR, player.colG, player.colG, 255});
+void drawPlayer(int row, int col){
+    DrawText("#", col * 40, row * 40, 40, WHITE);
+
+                std::cout << "DrawPlayer" << std::endl;
+}
+
+void drawWorld(Game &game)
+{
+    int col, line;
+    col = 1;
+    for(int i = (game.player.xPos - 9); i < (game.player.xPos + 8); i++)
+    {
+        line = 1;
+        for(int j = game.player.yPos - 8; j < game.player.yPos + 7; j++)
+        {
+            if(i == game.player.xPos && j == game.player.yPos)
+            {
+                drawPlayer(line, col);
+            }
+            else
+            {   
+                char t = game.world.grid[i][j];
+                drawTile(t, col, line);
+            }
+            line++;
+        }
+        col++;
+    }
 }
