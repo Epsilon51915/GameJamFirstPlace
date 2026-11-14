@@ -851,15 +851,6 @@ X11_xkbfile_INCLUDE_PATH:PATH=X11_xkbfile_INCLUDE_PATH-NOTFOUND
 X11_xkbfile_LIB:FILEPATH=X11_xkbfile_LIB-NOTFOUND
 
 //Value Computed by CMake
-as9_BINARY_DIR:STATIC=/home/kevin/Coding/GameJamFirstPlace/build
-
-//Value Computed by CMake
-as9_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-as9_SOURCE_DIR:STATIC=/home/kevin/Coding/GameJamFirstPlace
-
-//Value Computed by CMake
 gameJam_BINARY_DIR:STATIC=/home/kevin/Coding/GameJamFirstPlace/build
 
 //Value Computed by CMake
