@@ -21,7 +21,7 @@
 
 int main()
 {
-    raylib::Window window(800, 700, "As8");
+    raylib::Window window(800, 800, "As8");
     window.SetTargetFPS(60);
     window.SetState(FLAG_WINDOW_RESIZABLE);
 
