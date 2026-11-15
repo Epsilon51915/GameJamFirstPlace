@@ -165,12 +165,13 @@ void setupPlayer(Player &player){
     defaultTool.remainingDurability = 999999;
 }
 
-void mineItem(Player &player, char it){
-    std::cout<<it<<std::endl;
+void mineItem(Player &player, World &world){
+    //std::cout<<it<<std::endl;
     int random = rand() % 100;
     
-    switch(it){
+    switch(world.grid[player.xPos][player.yPos].c){
         case '^':
+            world.grid[player.xPos][player.yPos].health--;
             Item wood;
             wood.type = ItemType::WOOD;
             wood.quantity = 3;
@@ -226,6 +227,8 @@ void mineItem(Player &player, char it){
             if(player.tool.mineLevel < 1){
                 break;
             }
+            // Must do AFTER tool check, if tool check fails, don't lose health
+            world.grid[player.xPos][player.yPos].health--;
             Item iron;
             iron.type = ItemType::IRON;
             iron.quantity = 1;
@@ -244,6 +247,14 @@ void mineItem(Player &player, char it){
             }
             break;
     }
+    if(world.grid[player.xPos][player.yPos].health == 0)
+    {
+        Tile blank;
+        blank.c = '\0';
+        blank.health = 100;
+        blank.type = EMPTY_TILE;
+        world.grid[player.xPos][player.yPos] = blank;
+    }
 }
 
 
@@ -257,7 +268,7 @@ void checkCollisions(Player& player, World& world, char dir){
             return;
         // add more case statements here for objects you want to not be collidable
         default: // any collidable object
-            mineItem(player, world.grid[player.xPos][player.yPos].c);
+            mineItem(player, world);
             if(dir == 'u'){
                 player.yPos++;
             } else if(dir == 'd'){
