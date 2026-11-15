@@ -27,6 +27,7 @@ target_include_directories(gameJam PRIVATE
 
 configure_file(assets/hitTree.wav audio/hitTree.wav COPYONLY)
 configure_file(assets/hitIron.wav audio/hitIron.wav COPYONLY)
+configure_file(assets/hitAluminium.wav audio/hitAluminium.wav COPYONLY)
 configure_file(assets/walk.wav audio/walk.wav COPYONLY)
 
 # Link your libraries (SimplexNoise is no longer listed here because it's compiled directly)

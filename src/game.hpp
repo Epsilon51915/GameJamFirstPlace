@@ -16,9 +16,10 @@
 
 
 raylib::AudioDevice audio;
-raylib::Sound hitTree("assets/hitTree.wav");
-raylib::Sound hitIron("assets/hitIron.wav");
-raylib::Sound walk("assets/walk.wav");
+raylib::Sound hitTree("audio/hitTree.wav");
+raylib::Sound hitIron("audio/hitIron.wav");
+raylib::Sound hitAluminium("audio/hitAluminium.wav");
+raylib::Sound walk("audio/walk.wav");
 
 
 /*
@@ -329,6 +330,7 @@ void mineItem(Player &player, World &world){
                     std::cout << "No space!" << std::endl;
                 }
             }
+            hitAluminium.Play();
             break;
     }
     if(world.grid[player.xPos][player.yPos].health == 0)

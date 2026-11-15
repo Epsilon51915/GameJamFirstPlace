@@ -3,27 +3,42 @@
 
 //DrawTextPro(GetFontDefault(), "/", {200, 200}, {0, 0}, (float)rot, 40, 0, RED);
 
+void drawCredits()
+{
+    DrawText("You did it!", 40, 40, 40, WHITE);
+    DrawText("This was a demo for a time-travelling", 40, 80, 40, WHITE);
+    DrawText("factory game named 'Universe Game'", 40, 120, 40, WHITE);
+    DrawText("Thank you so much for giving",40, 160, 40, WHITE);
+    DrawText("this a shot!", 40, 200, 40, WHITE);
+    DrawText("Developed by:", 40, 240, 40, WHITE);
+    DrawText("Tyler Carroll", 100, 280, 40, RED);
+    DrawText("Kevin O'Connell", 100, 320, 40, PURPLE);
+    DrawText("In participation of the", 40, 360, 40, WHITE);
+    DrawText("UNR Game Jam 2026", 40, 400, 40, WHITE);
+    DrawText("Safe Travels!", 40, 440, 40, WHITE);
+}
+
 void drawTitle()
 {
- DrawText(" /$$   /$$           /$$", 40, 40, 20, WHITE);                                                  
- DrawText("| $$  | $$          |__/                                                  ", 40, 60, 20, WHITE);
- DrawText("| $$  | $$ /$$$$$$$  /$$ /$$    /$$ /$$$$$$   /$$$$$$   /$$$$$$$  /$$$$$$ ", 40, 80, 20, WHITE);
- DrawText("| $$  | $$| $$__  $$| $$|  $$  /$$//$$__  $$ /$$__  $$ /$$_____/ /$$__  $$", 40, 100, 20, WHITE);
- DrawText("| $$  | $$| $$ \\ $$| $$\\  $$/$$/| $$$$$$$$| $$ \\__/|  $$$$$$ | $$$$$$$$", 40, 120, 20, WHITE);
- DrawText("| $$  | $$| $$  | $$| $$ \\  $$$/ | $$_____/| $$      \\____  $$| $$_____/", 40, 140, 20, WHITE);
- DrawText("|  $$$$$$/| $$  | $$| $$  \\  $/  |  $$$$$$$| $$       /$$$$$$$/|  $$$$$$$", 40, 160, 20, WHITE); 
- DrawText("\\______/ |__/  |__/|__/   \\_/   \\_______/|__/      |_______/ \\_______/", 40, 180, 20, WHITE); 
+ DrawTextEx(GetFontDefault(),"/$$  /$$            /$$", {40, 40}, 20, 5, WHITE);                                                  
+ DrawTextEx(GetFontDefault(),"| $$  | $$           |__/                                                  ", {40, 60}, 20, 5, WHITE);
+ DrawTextEx(GetFontDefault(),"| $$  | $$  /$$$$$$$  /$$ /$$    /$$ /$$$$$$   /$$$$$$   /$$$$$$$  /$$$$$$ ", {40, 80}, 20, 5, WHITE);
+ DrawTextEx(GetFontDefault(),"| $$  | $$ | $$__  $$| $$|  $$  /$$//$$__  $$ /$$__  $$ /$$_____/ /$$__  $$", {40, 100}, 20, 5, WHITE);
+ DrawTextEx(GetFontDefault(),"| $$  | $$ | $$ \\ $$| $$\\  $$/$$/| $$$$$$$$| $$ \\__/|  $$$$$$ | $$$$$$$$", {40, 120}, 20, 5, WHITE);
+ DrawTextEx(GetFontDefault(),"| $$  | $$ | $$  | $$| $$ \\  $$$/ | $$_____/| $$      \\____  $$| $$_____/", {40, 140}, 20, 5, WHITE);
+ DrawTextEx(GetFontDefault(),"|  $$$$$$/ | $$  | $$| $$  \\  $/  |  $$$$$$$| $$       /$$$$$$$/|  $$$$$$$", {40, 160}, 20, 5, WHITE); 
+ DrawTextEx(GetFontDefault(),"\\______/  |__/  |__/|__/   \\_/   \\_______/|__/      |_______/ \\_______/", {40, 180}, 20, 5, WHITE); 
                                                                           
                                                                           
                                                                           
- DrawText("  /$$$$$$                                     ", 40, 300, 20, WHITE);                    
- DrawText(" /$$__  $$                                    ", 40, 320, 20, WHITE);       
- DrawText("| $$ \\__/    /$$$$$$    /$$$$$$/$$$$     /$$$$$$   ", 40, 340, 20, WHITE);       
- DrawText("| $$ /$$$$    |____  $$  | $$_  $$_  $$   /$$__  $$  ", 40, 360, 20, WHITE);       
- DrawText("| $$|_  $$     /$$$$$$$  | $$\\ $$\\ $$  | $$$$$$$$  ", 40, 380, 20, WHITE);       
- DrawText("| $$ \\ $$    /$$__  $$  | $$ | $$ | $$  | $$_____/  ", 40, 400, 20, WHITE);      
- DrawText("|  $$$$$$/  |  $$$$$$$  | $$ | $$ | $$  |  $$$$$$$  ", 40, 420, 20, WHITE);      
- DrawText("\\______/   \\_______/  |__/ |__/ |__/  \\_______/  ", 40, 440, 20, WHITE); 
+ DrawTextEx(GetFontDefault(), "  /$$$$$$                                     ", {40, 300}, 20, 5, WHITE);                    
+ DrawTextEx(GetFontDefault()," /$$__  $$                                    ", {40, 320}, 20, 5, WHITE);       
+ DrawTextEx(GetFontDefault(),"| $$ \\__/    /$$$$$$    /$$$$$$/$$$$     /$$$$$$   ", {40, 340}, 20, 5, WHITE);       
+ DrawTextEx(GetFontDefault(),"| $$ /$$$$    |____  $$  | $$_  $$_  $$   /$$__  $$  ", {40, 360}, 20, 5, WHITE);       
+ DrawTextEx(GetFontDefault(),"| $$|_  $$     /$$$$$$$  | $$\\ $$\\ $$  | $$$$$$$$  ", {40, 380}, 20, 5, WHITE);       
+ DrawTextEx(GetFontDefault(),"| $$  \\ $$    /$$__  $$  | $$ | $$ | $$  | $$_____/  ", {40, 400}, 20, 5, WHITE);      
+ DrawTextEx(GetFontDefault(),"|  $$$$$$/   |  $$$$$$$  | $$ | $$ | $$  |  $$$$$$$  ", {40, 420}, 20, 5, WHITE);      
+ DrawTextEx(GetFontDefault(),"\\______/   \\_______/  |__/ |__/ |__/  \\_______/  ", {40, 440}, 20, 5, WHITE); 
 }
 
 void drawTextAndBox(std::string text, int xPos, int yPos, int size, Color color)

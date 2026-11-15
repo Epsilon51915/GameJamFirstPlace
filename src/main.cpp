@@ -131,6 +131,7 @@ int main()
                 window.BeginDrawing(); 
                 {
                     window.ClearBackground(raylib::Color::Blue());
+                    drawCredits();
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = GAME;
