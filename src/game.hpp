@@ -160,15 +160,56 @@ void setupPlayer(Player &player){
     player.colR = 255;
     player.colG = 255;
     player.colB = 255;
+    Tool defaultTool;
+    defaultTool.mineLevel = 0;
+    defaultTool.remainingDurability = 999999;
 }
 
 void mineItem(Player &player, char it){
     std::cout<<it<<std::endl;
+    int random = rand() % 100;
+    
     switch(it){
         case '^':
             Item wood;
             wood.type = ItemType::WOOD;
             wood.quantity = 3;
+
+            if(random < 10){
+                Item sap;
+                sap.type = SAP;
+                sap.quantity = 1;
+                if(lookForItem(player, sap))
+                {
+                    editInventory(player, sap);
+                }
+                else
+                {
+                    if(!addItemToInventory(player, sap))
+                    {
+                        std::cout << "No space!" << std::endl;
+                    }
+                }
+            }
+
+            random = rand() % 100;
+            if(random < 10){
+                Item stick;
+                stick.type = STICK;
+                stick.quantity = 1;
+                if(lookForItem(player, stick))
+                {
+                    editInventory(player, stick);
+                }
+                else
+                {
+                    if(!addItemToInventory(player, stick))
+                    {
+                        std::cout << "No space!" << std::endl;
+                    }
+                }
+            }
+
             if(lookForItem(player, wood))
             {
                 editInventory(player, wood);
@@ -182,6 +223,9 @@ void mineItem(Player &player, char it){
             }
             break;
         case 'I':
+            if(player.tool.mineLevel < 1){
+                break;
+            }
             Item iron;
             iron.type = ItemType::IRON;
             iron.quantity = 1;
@@ -222,6 +266,10 @@ void checkCollisions(Player& player, World& world, char dir){
                 player.xPos--;
             } else if(dir == 'l'){
                 player.xPos++;
+            }
+
+            if(tile == 'T'){
+                player.isCrafting = true;
             }
     }
 }

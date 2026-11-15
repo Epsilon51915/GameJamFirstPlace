@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "tool.hpp"
 /*
 *
 *   Inventory BS
@@ -42,6 +43,8 @@ struct Player
     int xPos;
     int yPos;
     Inventory inventory;
+    bool isCrafting = false;
+    Tool tool;
 };
 
 /*
@@ -105,6 +108,15 @@ bool addItemToInventory(Player& player, Item item)
         return true;
     }
     return false;
+}
+
+int getItemIndex(Player &player, ItemType type){
+    for(int i = 0; i < player.inventory.curSize; i++){
+        if(player.inventory.items[i].type == type){
+            return i;
+        }
+    }
+    return -1;
 }
 
 // Display each inventory slot, including the quanitty of items in that slot, as well as what the item is.

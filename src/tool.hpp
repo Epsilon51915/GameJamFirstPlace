@@ -1,4 +1,9 @@
+#ifndef TOOL_H
+#define TOOL_H
+
 struct Tool{
 	int mineLevel;
-	int remaingDurability;
+	int remainingDurability;
 };
+
+#endif
