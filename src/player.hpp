@@ -79,6 +79,8 @@ std::string getItemName(ItemType type){
         case REINFORCEDROD:
             return "Reinforced Rod";
             break;
+        case CAMPFIRE:
+            return "Campfire";
         default:
             return "NULL";
     }
