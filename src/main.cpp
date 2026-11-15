@@ -41,6 +41,8 @@ int main()
     setupPlayer(game.player);
     setupWorld(game);
 
+    bool canMove = true;
+
     while(!window.ShouldClose())
     {
         switch(curScene)
@@ -80,11 +82,13 @@ int main()
                         curScene = CREDIT;
                     }
 
-                    if(raylib::Keyboard::IsKeyDown(KEY_TAB)){
+                    if(raylib::Keyboard::IsKeyDown(KEY_TAB) && canMove){
                         drawInventory(game.player);
                     }
                 } 
-                movement(game.player, game.world);
+                if(canMove){
+                    movement(game.player, game.world);
+                }
                 break;
 
             case CREDIT:

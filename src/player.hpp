@@ -69,7 +69,7 @@ std::string getItemName(ItemType type){
 // If the item is in the inventory, return true
 bool lookForItem(const Player &player, const Item &item)
 {
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < player.inventory.curSize; i++)
     {
         if(player.inventory.items[i].type == item.type)
         {
@@ -83,7 +83,7 @@ bool lookForItem(const Player &player, const Item &item)
 void editInventory(Player &player, const Item &item)
 {
     int ind;
-    for(int i = 0; i < 10; i++)
+    for(int i = 0; i < player.inventory.curSize; i++)
     {
         if(player.inventory.items[i].type == item.type)
         {

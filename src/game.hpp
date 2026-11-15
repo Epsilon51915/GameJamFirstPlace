@@ -133,6 +133,7 @@ void setupPlayer(Player &player){
 }
 
 void mineItem(Player &player, char it){
+    std::cout<<it<<std::endl;
     switch(it){
         case '^':
             Item wood;
@@ -145,6 +146,24 @@ void mineItem(Player &player, char it){
             else
             {
                 if(!addItemToInventory(player, wood))
+                {
+                    std::cout << "No space!" << std::endl;
+                }
+            }
+            break;
+        case 'I':
+            Item iron;
+            iron.type = IRON;
+            iron.quantity = 1;
+            if(lookForItem(player, iron))
+            {
+                std::cout<<"Found Item alread"<<std::endl;
+                editInventory(player, iron);
+            }
+            else
+            {
+                std::cout<<"Trying to add item"<<std::endl;
+                if(!addItemToInventory(player, iron))
                 {
                     std::cout << "No space!" << std::endl;
                 }
