@@ -65,7 +65,7 @@ void drawIron(int x, int y){
 void drawTile(char tile, int x, int y){
     switch(tile){
         case '\0':
-            DrawRectangle(x * 40, y * 40, 20, 20, {112, 31, 126, 100}); 
+            DrawRectangle(x * 40, y * 40 + 12, 20, 20, {112, 31, 126, 100}); 
             break;
         case '^':
             drawTree(x, y);
@@ -98,7 +98,7 @@ void drawWorld(Game &game)
             }
             else
             {   
-                drawTile(game.world.grid[i][j], col, line);
+                drawTile(game.world.grid[i][j].c, col, line);
             }
             line++;
         }

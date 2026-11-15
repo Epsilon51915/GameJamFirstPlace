@@ -26,6 +26,18 @@ struct Game
 
 void veinBuilder(Game &game, int x, int y, char build)
 {
+    std::cout << "VB" << std::endl;
+    Tile tile;
+    tile.c = build;
+    tile.health = 100;
+    if(build == '^')
+    {
+        tile.type = TREE_TILE;
+    }
+    else
+    {
+        tile.type = IRON_TILE;
+    }
     int steps = 1;
     int vel = std::rand() % 8;
     while(steps > 0)
@@ -50,11 +62,11 @@ void veinBuilder(Game &game, int x, int y, char build)
             y = 197;
             steps++;
         }
-        game.world.grid[x][y] = build;
-        game.world.grid[x+1][y] = build;
-        game.world.grid[x-1][y] = build;
-        game.world.grid[x][y+1] = build;
-        game.world.grid[x][y-1] = build;
+        game.world.grid[x][y] = tile;
+        game.world.grid[x+1][y] = tile;
+        game.world.grid[x-1][y] = tile;
+        game.world.grid[x][y+1] = tile;
+        game.world.grid[x][y-1] = tile;
         switch(vel)
         {
             case 0:
@@ -94,12 +106,17 @@ void veinBuilder(Game &game, int x, int y, char build)
 
 void setupWorld(Game &game)
 {
+    Tile blank;
+    blank.c = '\0';
+    blank.health = 100;
+    blank.type = EMPTY_TILE;
     srand(static_cast<unsigned int>(std::time(nullptr)));
     for(int i = 0; i < 200; i++)
     {
         for(int j = 0; j < 200; j++)
         {
-            game.world.grid[i][j] = '\0';
+            
+            game.world.grid[i][j] = blank;
         }
     }
 
@@ -112,15 +129,28 @@ void setupWorld(Game &game)
                 continue;
             }
             int random = rand() % 100;
-            if(random < 5)
-            {
+            if(random < 5){
                 random = rand() % 2;
                 if(random == 0){veinBuilder(game, x, y, '^');}
                 else if(random == 1){veinBuilder(game, x, y, 'I');}
             }
         }
     }
-    game.world.grid[105][105] = 'T';
+
+    Tile tile;
+    tile.c = 'T';
+    tile.health = 100;
+    tile.type = MACHINE_TILE;
+    game.world.grid[105][105] = tile;
+    game.world.grid[104][105] = blank;
+    game.world.grid[106][105] = blank;
+    game.world.grid[105][104] = blank;
+    game.world.grid[105][106] = blank;
+    game.world.grid[106][106] = blank;
+    game.world.grid[104][104] = blank;
+    game.world.grid[104][106] = blank;
+    game.world.grid[106][104] = blank;
+    std::cout << "Machine" << std::endl;
 }
 
 void setupPlayer(Player &player){
@@ -137,7 +167,7 @@ void mineItem(Player &player, char it){
     switch(it){
         case '^':
             Item wood;
-            wood.type = WOOD;
+            wood.type = ItemType::WOOD;
             wood.quantity = 3;
             if(lookForItem(player, wood))
             {
@@ -153,7 +183,7 @@ void mineItem(Player &player, char it){
             break;
         case 'I':
             Item iron;
-            iron.type = IRON;
+            iron.type = ItemType::IRON;
             iron.quantity = 1;
             if(lookForItem(player, iron))
             {
@@ -172,15 +202,18 @@ void mineItem(Player &player, char it){
     }
 }
 
+
+// REFACTOR WITH NEW TILE STUFF
+
 void checkCollisions(Player& player, World& world, char dir){
-    char tile = world.grid[player.xPos][player.yPos];
+    char tile = world.grid[player.xPos][player.yPos].c;
 
     switch(tile){
         case '\0':
             return;
         // add more case statements here for objects you want to not be collidable
         default: // any collidable object
-            mineItem(player, world.grid[player.xPos][player.yPos]);
+            mineItem(player, world.grid[player.xPos][player.yPos].c);
             if(dir == 'u'){
                 player.yPos++;
             } else if(dir == 'd'){
