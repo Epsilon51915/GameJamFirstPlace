@@ -12,7 +12,8 @@ enum ItemType
     WOOD,
     LEAF,
     SAP,
-    STICK
+    STICK,
+    VINE
 };
 
 struct Item

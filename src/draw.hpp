@@ -25,6 +25,12 @@ void drawTitle()
  DrawText("\\______/   \\_______/  |__/ |__/ |__/  \\_______/  ", 40, 440, 20, WHITE); 
 }
 
+void drawTextAndBox(std::string text, int xPos, int yPos, int size, Color color)
+{
+    DrawRectangle(xPos - 10, yPos, MeasureText(text.c_str(), size) + 20, size, BLACK);
+    DrawText(text.c_str(), xPos, yPos, size, color);
+}
+
 void drawCenteredText(std::string text, int size, int windowW, int windowH)
 {
     int textW = MeasureText(text.c_str(), size);

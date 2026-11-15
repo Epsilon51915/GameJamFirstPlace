@@ -26,6 +26,7 @@ enum Scenes
 {
     SPLASH = 0,
     TITLE,
+    CONTROLS,
     GAME,
     CREDIT
 };
@@ -66,9 +67,22 @@ int main()
                     drawTitle();
                     if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
-                        curScene = GAME;
+                        curScene = CONTROLS;
                     }
                 } 
+                break;
+
+            case CONTROLS:
+                window.ClearBackground(raylib::Color::White());
+                drawTextAndBox("W/A/S/D", 40, 40, 20, WHITE);
+                drawTextAndBox("Up/Down/Left/Right", 200, 40, 20, WHITE);
+
+                drawTextAndBox("TAB", 40, 80, 20, WHITE);
+                drawTextAndBox("View Inventory", 200, 80, 20, WHITE);
+                if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
+                    {
+                        curScene = GAME;
+                    }
                 break;
 
             case GAME:
