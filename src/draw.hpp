@@ -118,7 +118,7 @@ void drawCraftingMenu(Player& player, std::vector<Recipe> recipes, int selection
     drawInventory(player);
 
     Recipe cur = recipes[selection];
-    if(cur.isTool){
+    if(true){
         drawCenteredText(cur.name, 50, 1000, 900);
 
         for(int i = 0; i < cur.requirements.size(); i++){

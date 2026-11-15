@@ -13,6 +13,35 @@ struct Recipe{
 	std::vector<Item> requirements; //item quantity specifies amount needed
 };
 
+void initializeCampfireRecipe(std::vector<Recipe> &recipes)
+{
+	Recipe campfire;
+	campfire.name = "Campfire";
+	campfire.isTool = false;
+	Item campfireItem;
+	campfireItem.type = CAMPFIRE;
+	campfireItem.quantity = 1;
+	campfire.resultItem = campfireItem;
+
+	std::vector<Item> woodRequirements;
+	Item wood;
+	wood.type = WOOD;
+	wood.quantity = 5;
+	woodRequirements.push_back(wood);
+	Item leaf;
+	leaf.type = LEAF;
+	leaf.quantity = 10;
+	woodRequirements.push_back(leaf);
+	Item sticks;
+	sticks.type = STICK;
+	sticks.quantity = 10;
+	woodRequirements.push_back(sticks);
+
+	campfire.requirements = woodRequirements;
+
+	recipes.push_back(campfire);
+}
+
 void initializeWoodAxeRecipe(std::vector<Recipe> &recipes)
 {
 	Recipe woodAxe;
@@ -112,6 +141,7 @@ void initializeStarterRecipes(std::vector<Recipe> &recipes){
 	initializeWoodPickaxeRecipe(recipes);
 	initializeWoodAxeRecipe(recipes);
 	initializeIronPickaxeRecipe(recipes);
+	initializeCampfireRecipe(recipes);
 }
 
 bool canCraft(Recipe recipe, Player& player){
@@ -139,10 +169,6 @@ bool craft(Recipe recipe, Player& player){
 				removeIndices.push_back(index);
 			}
 		}
-
-		//for(int i = 0; i < removeIndices.size(); i++){
-		//	player.inventory.items.erase(player.inventory.items.begin() + removeIndices[i]);
-		//}
 		if(recipe.isTool){
 			if(recipe.resultTool.type == PICKAXE)
 			{
@@ -152,6 +178,23 @@ bool craft(Recipe recipe, Player& player){
 			else if(recipe.resultTool.type == AXE)
 			{
 				player.axeTool = recipe.resultTool;
+			}
+		}
+		else
+		{
+			if(recipe.resultItem.type == CAMPFIRE)
+			{
+				if(lookForItem(player, recipe.resultItem))
+				{
+					editInventory(player, recipe.resultItem);
+				}
+				else
+				{
+					if(addItemToInventory(player, recipe.resultItem))
+					{
+						// Had space, good
+					}
+				}
 			}
 		}
 

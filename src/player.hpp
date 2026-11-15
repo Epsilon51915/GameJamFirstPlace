@@ -16,7 +16,8 @@ enum ItemType
     STICK,
     VINE,
     FLINT,
-    ALUMINUM
+    ALUMINUM,
+    CAMPFIRE
 };
 
 struct Item
