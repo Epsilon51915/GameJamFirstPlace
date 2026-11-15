@@ -7,7 +7,8 @@ enum TileType
     MACHINE_TILE,
     TREE_TILE,
     IRON_TILE,
-    CAMPFIRE_TILE
+    CAMPFIRE_TILE,
+    ALUMINUM_TILE
 };
 
 struct Tile
