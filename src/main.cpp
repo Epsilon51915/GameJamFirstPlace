@@ -15,7 +15,7 @@ enum Scenes
 
 int main()
 {
-    raylib::Window window(800, 800, "GameJamFirstPlace");
+    raylib::Window window(800, 800, "UniverseGame");
     window.SetTargetFPS(60);
     window.SetState(FLAG_WINDOW_RESIZABLE);
 
@@ -40,7 +40,7 @@ int main()
                     {
                         curScene = TITLE;
                     }
-                    drawCenteredText("Game Jam First Place Studio", 40, window.GetWidth(), window.GetHeight(), RED);
+                    drawCenteredText("Universe Game Studio", 40, window.GetWidth(), window.GetHeight(), RED);
                 } 
                 break;
 
