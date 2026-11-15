@@ -1,27 +1,8 @@
-#include <iostream>
-#include "AudioDevice.hpp"
-#include "Camera3D.hpp"
-#include "Keyboard.hpp"
-#include "Matrix.hpp"
-#include "Model.hpp"
-#include "RadiansDegrees.hpp"
-#include "Vector3.hpp"
-#include "Vector4.hpp"
-#include "raylib-cpp.hpp"
-#include "raylib.h"
-#include <concepts>
-#include <execution>
-#include <iostream>
-#include <limits>
-#include <optional>
-#include <memory>
-#include <vector>
-#include <iostream>
-#include <map>
-
 #include "draw.hpp"
 #include "game.hpp"
 #include "recipe.hpp"
+
+
 
 enum Scenes
 {

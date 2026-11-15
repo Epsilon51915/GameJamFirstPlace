@@ -1,10 +1,25 @@
 #ifndef GAME_HPP
 #define GAME_HPP
+#include "AudioDevice.hpp"
+#include "Keyboard.hpp"
+#include "raylib-cpp.hpp"
+#include "raylib.h"
+#include <execution>
+#include <iostream>
+#include <vector>
+#include <iostream>
 
 #include "player.hpp"
 #include "world.hpp"
 #include "SimplexNoise.h"
 #include <ctime>
+
+
+raylib::AudioDevice audio;
+raylib::Sound hitTree("assets/hitTree.wav");
+raylib::Sound hitIron("assets/hitIron.wav");
+raylib::Sound walk("assets/walk.wav");
+
 
 /*
 *
@@ -244,6 +259,7 @@ void mineItem(Player &player, World &world){
                     std::cout << "No space!" << std::endl;
                 }
             }
+            hitTree.Play();
             break;
         case 'I':
             if(player.pickaxeTool.mineLevel < 1){
@@ -286,6 +302,7 @@ void mineItem(Player &player, World &world){
                     }
                 }
             }
+            hitIron.Play();
             break;
     }
     if(world.grid[player.xPos][player.yPos].health == 0)
@@ -301,12 +318,12 @@ void mineItem(Player &player, World &world){
 
 // REFACTOR WITH NEW TILE STUFF
 
-void checkCollisions(Player& player, World& world, char dir){
+bool checkCollisions(Player& player, World& world, char dir){
     char tile = world.grid[player.xPos][player.yPos].c;
 
     switch(tile){
         case '\0':
-            return;
+            return true;
         // add more case statements here for objects you want to not be collidable
         default: // any collidable object
             mineItem(player, world);
@@ -323,27 +340,35 @@ void checkCollisions(Player& player, World& world, char dir){
             if(tile == 'T'){
                 player.isCrafting = true;
             }
+            return false;
     }
-}
-
-void placeItem(Player& player, World &world)
-{
-
 }
 
 void movement(Player& player, World& world){
     if(raylib::Keyboard::IsKeyPressed(KEY_W) && player.yPos != 0){
         player.yPos--;
-        checkCollisions(player, world, 'u');
+        if(checkCollisions(player, world, 'u'))
+        {
+            walk.Play();
+        }
     } else if(raylib::Keyboard::IsKeyPressed(KEY_S) && player.yPos != 199){
         player.yPos++;
-        checkCollisions(player, world, 'd');
+        if(checkCollisions(player, world, 'd'))
+        {
+            walk.Play();
+        }
     } else if(raylib::Keyboard::IsKeyPressed(KEY_D) && player.xPos != 199){
         player.xPos++;
-        checkCollisions(player, world, 'r');
+        if(checkCollisions(player, world, 'r'))
+        {
+            walk.Play();
+        }
     } else if(raylib::Keyboard::IsKeyPressed(KEY_A) && player.xPos != 0){
         player.xPos--;
-        checkCollisions(player, world, 'l');
+        if(checkCollisions(player, world, 'l'))
+        {
+            walk.Play();
+        }
     } else if(raylib::Keyboard::IsKeyPressed(KEY_I))
     {
         displayInventory(player);
