@@ -123,10 +123,10 @@ void initializeIronPickaxeRecipe(std::vector<Recipe> &recipes){
 	sap.quantity = 3;
 	ironRequirements.push_back(sap);
 
-	Item sticks;
-	sticks.type = STICK;
-	sticks.quantity = 3;
-	ironRequirements.push_back(sticks);
+	Item rods;
+	rods.type = REINFORCEDROD;
+	rods.quantity = 3;
+	ironRequirements.push_back(rods);
 
 	Item flint;
 	flint.type = FLINT;
@@ -137,9 +137,36 @@ void initializeIronPickaxeRecipe(std::vector<Recipe> &recipes){
 	recipes.push_back(ironPickaxe);
 }
 
+void initializeReinforcedRodRecipe(std::vector<Recipe> &recipes){
+	Recipe reinforcedRod;
+
+	reinforcedRod.name = "Reinforced Rod";
+	reinforcedRod.isTool = false;
+
+	Item reinforcedRodItem;
+	reinforcedRodItem.type = REINFORCEDROD;
+	reinforcedRodItem.quantity = 1;
+	reinforcedRod.resultItem = reinforcedRodItem;
+
+	std::vector<Item> requirements;
+	Item iron;
+	iron.type = IRON;
+	iron.quantity = 3;
+	requirements.push_back(iron);
+
+	Item sap;
+	sap.type = SAP;
+	sap.quantity = 2;
+	requirements.push_back(sap);
+
+	reinforcedRod.requirements = requirements;
+	recipes.push_back(reinforcedRod);
+}
+
 void initializeStarterRecipes(std::vector<Recipe> &recipes){
 	initializeWoodPickaxeRecipe(recipes);
 	initializeWoodAxeRecipe(recipes);
+	initializeReinforcedRodRecipe(recipes);
 	initializeIronPickaxeRecipe(recipes);
 	initializeCampfireRecipe(recipes);
 }
@@ -179,23 +206,19 @@ bool craft(Recipe recipe, Player& player){
 			{
 				player.axeTool = recipe.resultTool;
 			}
-		}
-		else
-		{
-			if(recipe.resultItem.type == CAMPFIRE)
-			{
-				if(lookForItem(player, recipe.resultItem))
-				{
-					editInventory(player, recipe.resultItem);
-				}
-				else
-				{
-					if(addItemToInventory(player, recipe.resultItem))
-					{
-						// Had space, good
-					}
-				}
-			}
+			player.pickaxeTool = recipe.resultTool;
+		} else {
+			if(lookForItem(player, recipe.resultItem))
+            {
+                editInventory(player, recipe.resultItem);
+            }
+            else
+            {
+                if(!addItemToInventory(player, recipe.resultItem))
+                {
+                    std::cout << "No space!" << std::endl;
+                }
+            }
 		}
 
 		return true;

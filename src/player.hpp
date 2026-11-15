@@ -17,7 +17,8 @@ enum ItemType
     VINE,
     FLINT,
     ALUMINUM,
-    CAMPFIRE
+    CAMPFIRE,
+    REINFORCEDROD
 };
 
 struct Item
@@ -73,7 +74,10 @@ std::string getItemName(ItemType type){
             return "Flint";
             break;
         case ALUMINUM:
-            return "ALUMINUM";
+            return "Aluminum";
+            break;
+        case REINFORCEDROD:
+            return "Reinforced Rod";
             break;
         default:
             return "NULL";
