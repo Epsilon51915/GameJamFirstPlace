@@ -93,6 +93,16 @@ int main()
                         if(raylib::Keyboard::IsKeyDown(KEY_SPACE)){
                             craft(recipes[craftSelection], game.player);
                         }
+                        if(raylib::Keyboard::IsKeyDown(KEY_D)){
+                            if(craftSelection < recipes.size() - 1){
+                                craftSelection++;
+                            }
+                        }
+                        if(raylib::Keyboard::IsKeyDown(KEY_A)){
+                            if(craftSelection > 0){
+                                craftSelection--;
+                            }
+                        }
                         if(raylib::Keyboard::IsKeyDown(KEY_TAB)){
                             game.player.isCrafting = false;
                         }

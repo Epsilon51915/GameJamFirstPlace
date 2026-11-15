@@ -13,7 +13,9 @@ enum ItemType
     WOOD,
     LEAF,
     SAP,
-    STICK
+    STICK,
+    FLINT,
+    ALUMINUM
 };
 
 struct Item
@@ -64,6 +66,12 @@ std::string getItemName(ItemType type){
             return "Sap";
         case STICK:
             return "Stick";
+        case FLINT:
+            return "Flint";
+            break;
+        case ALUMINUM:
+            return "ALUMINUM";
+            break;
         default:
             return "NULL";
     }
