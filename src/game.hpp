@@ -174,7 +174,7 @@ void mineItem(Player &player, World &world){
             world.grid[player.xPos][player.yPos].health--;
             Item wood;
             wood.type = ItemType::WOOD;
-            wood.quantity = 3;
+            wood.quantity = 1;
 
             if(random < 10){
                 Item sap;
