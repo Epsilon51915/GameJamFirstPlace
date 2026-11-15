@@ -63,6 +63,10 @@ void drawIron(int x, int y){
     DrawText("I", x * 40, y * 40, 40, GRAY);
 }
 
+void drawAluminum(int x, int y){
+    DrawText("A", x * 40, y * 40, 40, {214, 214, 214, 255});
+}
+
 void drawTile(char tile, int x, int y){
     switch(tile){
         case '\0':
@@ -76,6 +80,9 @@ void drawTile(char tile, int x, int y){
             break;
         case 'I':
             drawIron(x, y);
+            break;
+        case 'A':
+            drawAluminum(x, y);
             break;
     }
 }
@@ -133,5 +140,22 @@ void drawCraftingMenu(Player& player, std::vector<Recipe> recipes, int selection
     }
     for(int i = 0; i < cur.requirements.size(); i++){
         DrawText((getItemName(cur.requirements[i].type) + " x" + std::to_string(cur.requirements[i].quantity)).c_str(), 450, 500 + 40 * i, 30, color);
+    }
+}
+
+void drawGoal(Player &player, int goalNum){
+    Color color = RED;
+    if(goalNum == 0){
+        int index = getItemIndex(player, IRON);
+        if(index != -1 && player.inventory.items[index].quantity >= 200){
+            color = GREEN;
+        }
+        DrawText("200 Iron to Repair (r)", 400, 65, 30, color);
+    } else if(goalNum == 1){
+        int index = getItemIndex(player, ALUMINUM);
+        if(index != -1 && player.inventory.items[index].quantity >= 100){
+            color = GREEN;
+        }
+        DrawText("100 Aluminum to Repair (r)", 400, 65, 30, color);
     }
 }

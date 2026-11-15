@@ -120,10 +120,20 @@ int main()
                         if(raylib::Keyboard::IsKeyPressed(KEY_TAB)){
                             game.player.isCrafting = false;
                         }
+                        if(raylib::Keyboard::IsKeyPressed(KEY_R)){
+                            if(canAdvanceWorld(game.player, game.curWorldNum)){
+                                game.curWorldNum++;
+                                if(game.curWorldNum == 2){
+                                    curScene = CREDIT;
+                                }
+                                setupWorld(game);
+                            }
+                        }
                     }
 
                     if(game.player.isCrafting){
                         drawCraftingMenu(game.player, recipes, craftSelection);
+                        drawGoal(game.player, game.curWorldNum);
                     }
                 } 
                 if(!game.player.isCrafting){

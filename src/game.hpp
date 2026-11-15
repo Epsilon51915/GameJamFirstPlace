@@ -33,9 +33,13 @@ void veinBuilder(Game &game, int x, int y, char build)
     {
         tile.type = TREE_TILE;
     }
-    else
+    else if(build == 'I')
     {
         tile.type = IRON_TILE;
+    }
+    else if(build == 'A')
+    {
+        tile.type = ALUMINUM_TILE;
     }
     int steps = 1;
     int vel = std::rand() % 8;
@@ -43,23 +47,19 @@ void veinBuilder(Game &game, int x, int y, char build)
     {
         if(x < 1)
         {
-            x = 2;
-            steps++;
+            x = 1;
         }
         if(y < 1)
         {
-            y = 2;
-            steps++;
+            y = 1;
         }
         if(x > 198)
         {
-            x = 197;
-            steps++;
+            x = 198;
         }
         if(y > 198)
         {
-            y = 197;
-            steps++;
+            y = 198;
         }
         game.world.grid[x][y] = tile;
         game.world.grid[x+1][y] = tile;
@@ -132,6 +132,9 @@ void setupWorld(Game &game)
                 random = rand() % 2;
                 if(random == 0){veinBuilder(game, x, y, '^');}
                 else if(random == 1){veinBuilder(game, x, y, 'I');}
+            }
+            if(random >= 96 && game.curWorldNum == 1){
+                veinBuilder(game, x, y, 'A');
             }
         }
     }
@@ -265,6 +268,29 @@ void mineItem(Player &player, World &world){
                 }
             }
             break;
+        case 'A':
+            if(player.pickaxeTool.mineLevel < 2){
+                break;
+            }
+
+            world.grid[player.xPos][player.yPos].health--;
+            Item aluminum;
+            aluminum.type = ItemType::ALUMINUM;
+            aluminum.quantity = 1;
+            if(lookForItem(player, aluminum))
+            {
+                std::cout<<"Found Item alread"<<std::endl;
+                editInventory(player, aluminum);
+            }
+            else
+            {
+                std::cout<<"Trying to add item"<<std::endl;
+                if(!addItemToInventory(player, aluminum))
+                {
+                    std::cout << "No space!" << std::endl;
+                }
+            }
+            break;
     }
     if(world.grid[player.xPos][player.yPos].health == 0)
     {
@@ -321,6 +347,29 @@ void movement(Player& player, World& world){
     {
         displayInventory(player);
     }
+}
+
+bool canAdvanceWorld(Player& player, int worldNum){
+    if(worldNum == 0){
+        int index = getItemIndex(player, IRON);
+        if(index == -1){
+            return false;
+        }
+        if(player.inventory.items[index].quantity >= 200){
+            return true;
+        }
+        return false;
+    } else if(worldNum == 1){
+        int index = getItemIndex(player, ALUMINUM);
+        if(index == -1){
+            return false;
+        }
+        if(player.inventory.items[index].quantity >= 100){
+            return true;
+        }
+        return false;
+    }
+    return false;
 }
 
 #endif

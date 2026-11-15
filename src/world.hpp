@@ -6,7 +6,8 @@ enum TileType
     EMPTY_TILE = 0,
     MACHINE_TILE,
     TREE_TILE,
-    IRON_TILE
+    IRON_TILE,
+    ALUMINUM_TILE
 };
 
 struct Tile
