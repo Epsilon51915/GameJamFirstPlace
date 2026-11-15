@@ -63,6 +63,10 @@ int main()
 
                 drawTextAndBox("TAB", 40, 80, 20, WHITE);
                 drawTextAndBox("View Inventory", 200, 80, 20, WHITE);
+
+                drawTextAndBox("Run into the Time Machine to open a crafting menu", 40, 120, 20, WHITE);
+                drawTextAndBox("TAB while crafting to exit the crafting menu", 40, 160, 20, WHITE);
+                drawTextAndBox("SPACE while crafting to craft an item", 40, 200, 20, WHITE);
                 if(raylib::Keyboard::IsKeyPressed(KEY_ENTER))
                     {
                         curScene = GAME;
