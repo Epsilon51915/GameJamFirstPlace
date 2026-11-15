@@ -104,20 +104,20 @@ int main()
                         drawInventory(game.player);
                     }
                     if(game.player.isCrafting){
-                        if(raylib::Keyboard::IsKeyDown(KEY_SPACE)){
+                        if(raylib::Keyboard::IsKeyPressed(KEY_SPACE)){
                             craft(recipes[craftSelection], game.player);
                         }
-                        if(raylib::Keyboard::IsKeyDown(KEY_D)){
+                        if(raylib::Keyboard::IsKeyPressed(KEY_D)){
                             if(craftSelection < recipes.size() - 1){
                                 craftSelection++;
                             }
                         }
-                        if(raylib::Keyboard::IsKeyDown(KEY_A)){
+                        if(raylib::Keyboard::IsKeyPressed(KEY_A)){
                             if(craftSelection > 0){
                                 craftSelection--;
                             }
                         }
-                        if(raylib::Keyboard::IsKeyDown(KEY_TAB)){
+                        if(raylib::Keyboard::IsKeyPressed(KEY_TAB)){
                             game.player.isCrafting = false;
                         }
                     }
