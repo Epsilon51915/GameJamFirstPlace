@@ -120,9 +120,10 @@ void drawCraftingMenu(Player& player, std::vector<Recipe> recipes, int selection
     Recipe cur = recipes[selection];
     if(cur.isTool){
         drawCenteredText(cur.name, 50, 1000, 900);
-
-        for(int i = 0; i < cur.requirements.size(); i++){
-            DrawText((getItemName(cur.requirements[i].type) + " x" + std::to_string(cur.requirements[i].quantity)).c_str(), 450, 500 + 40 * i, 30, RED);
-        }
+    } else {
+        drawCenteredText(getItemName(cur.resultItem.type), 50, 1000, 900);
+    }
+    for(int i = 0; i < cur.requirements.size(); i++){
+        DrawText((getItemName(cur.requirements[i].type) + " x" + std::to_string(cur.requirements[i].quantity)).c_str(), 450, 500 + 40 * i, 30, RED);
     }
 }

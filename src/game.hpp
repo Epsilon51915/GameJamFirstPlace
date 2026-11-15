@@ -245,6 +245,25 @@ void mineItem(Player &player, World &world){
                     std::cout << "No space!" << std::endl;
                 }
             }
+
+            random = rand() % 100;
+
+            if(random < 7){
+                Item flint;
+                flint.type = FLINT;
+                flint.quantity = 1;
+                if(lookForItem(player, flint))
+                {
+                    editInventory(player, flint);
+                }
+                else
+                {
+                    if(!addItemToInventory(player, flint))
+                    {
+                        std::cout << "No space!" << std::endl;
+                    }
+                }
+            }
             break;
     }
     if(world.grid[player.xPos][player.yPos].health == 0)
