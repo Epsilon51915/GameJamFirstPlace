@@ -44,7 +44,8 @@ struct Player
     int yPos;
     Inventory inventory;
     bool isCrafting = false;
-    Tool tool;
+    Tool pickaxeTool;
+    Tool axeTool;
 };
 
 /*

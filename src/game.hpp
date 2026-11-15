@@ -26,7 +26,6 @@ struct Game
 
 void veinBuilder(Game &game, int x, int y, char build)
 {
-    std::cout << "VB" << std::endl;
     Tile tile;
     tile.c = build;
     tile.health = 100;
@@ -150,7 +149,6 @@ void setupWorld(Game &game)
     game.world.grid[104][104] = blank;
     game.world.grid[104][106] = blank;
     game.world.grid[106][104] = blank;
-    std::cout << "Machine" << std::endl;
 }
 
 void setupPlayer(Player &player){
@@ -163,6 +161,8 @@ void setupPlayer(Player &player){
     Tool defaultTool;
     defaultTool.mineLevel = 0;
     defaultTool.remainingDurability = 999999;
+    player.axeTool = defaultTool;
+    player.pickaxeTool = defaultTool;
 }
 
 void mineItem(Player &player, World &world){
@@ -224,7 +224,7 @@ void mineItem(Player &player, World &world){
             }
             break;
         case 'I':
-            if(player.tool.mineLevel < 1){
+            if(player.pickaxeTool.mineLevel < 1){
                 break;
             }
             // Must do AFTER tool check, if tool check fails, don't lose health
