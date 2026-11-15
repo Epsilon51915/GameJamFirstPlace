@@ -71,9 +71,47 @@ void initializeWoodPickaxeRecipe(std::vector<Recipe> &recipes){
 	recipes.push_back(woodPickaxe);
 }
 
+void initializeIronPickaxeRecipe(std::vector<Recipe> &recipes){
+	Recipe ironPickaxe;
+
+	ironPickaxe.name = "Iron Pickaxe";
+	ironPickaxe.isTool = true;
+
+	Tool ironPickaxeTool;
+	ironPickaxeTool.mineLevel = 2;
+	ironPickaxeTool.remainingDurability = 100;
+
+	ironPickaxe.resultTool = ironPickaxeTool;
+
+	std::vector<Item> ironRequirements;
+	Item iron;
+	iron.type = IRON;
+	iron.quantity = 5;
+	ironRequirements.push_back(iron);
+
+	Item sap;
+	sap.type = SAP;
+	sap.quantity = 3;
+	ironRequirements.push_back(sap);
+
+	Item sticks;
+	sticks.type = STICK;
+	sticks.quantity = 3;
+	ironRequirements.push_back(sticks);
+
+	Item flint;
+	flint.type = FLINT;
+	flint.quantity = 3;
+	ironRequirements.push_back(flint);
+
+	ironPickaxe.requirements = ironRequirements;
+	recipes.push_back(ironPickaxe);
+}
+
 void initializeStarterRecipes(std::vector<Recipe> &recipes){
 	initializeWoodPickaxeRecipe(recipes);
 	initializeWoodAxeRecipe(recipes);
+	initializeIronPickaxeRecipe(recipes);
 }
 
 bool canCraft(Recipe recipe, Player& player){
