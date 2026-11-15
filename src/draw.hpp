@@ -32,12 +32,12 @@ void drawTextAndBox(std::string text, int xPos, int yPos, int size, Color color)
     DrawText(text.c_str(), xPos, yPos, size, color);
 }
 
-void drawCenteredText(std::string text, int size, int windowW, int windowH)
+void drawCenteredText(std::string text, int size, int windowW, int windowH, Color color)
 {
     int textW = MeasureText(text.c_str(), size);
     int textX = (windowW / 2) - (textW / 2);
     int textY = (windowH / 2) - (size / 2);
-    DrawText(text.c_str(), textX, textY, 35, RED);
+    DrawText(text.c_str(), textX, textY, 35, color);
 }
 
 void drawTree(int x, int y)
@@ -116,13 +116,22 @@ void drawInventory(Player& player){
 
 void drawCraftingMenu(Player& player, std::vector<Recipe> recipes, int selection){
     drawInventory(player);
-
+    Color color;
+    if(canCraft(recipes[selection], player))
+    {
+        color = GREEN;
+    }
+    else
+    {
+        color = RED;
+    }
     Recipe cur = recipes[selection];
     if(true){
-        drawCenteredText(cur.name, 50, 1000, 900);
+        drawCenteredText(cur.name, 50, 1000, 900, color);
 
         for(int i = 0; i < cur.requirements.size(); i++){
-            DrawText((getItemName(cur.requirements[i].type) + " x" + std::to_string(cur.requirements[i].quantity)).c_str(), 450, 500 + 40 * i, 30, RED);
+            
+            DrawText((getItemName(cur.requirements[i].type) + " x" + std::to_string(cur.requirements[i].quantity)).c_str(), 450, 500 + 40 * i, 30, color);
         }
     }
 }

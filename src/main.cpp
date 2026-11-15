@@ -59,7 +59,7 @@ int main()
                     {
                         curScene = TITLE;
                     }
-                    drawCenteredText("Game Jam First Place Studio", 40, window.GetWidth(), window.GetHeight());
+                    drawCenteredText("Game Jam First Place Studio", 40, window.GetWidth(), window.GetHeight(), RED);
                 } 
                 break;
 
