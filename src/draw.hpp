@@ -63,6 +63,24 @@ void drawIron(int x, int y){
     DrawText("I", x * 40, y * 40, 40, GRAY);
 }
 
+void drawCampfire(int x, int y)
+{
+    DrawText("/", x*40, y*40+15, 13, ORANGE);
+    DrawText("\\", x*40+5, y*40+15, 13, ORANGE);
+    DrawText("/", x*40+10, y*40+15, 13, ORANGE);
+    DrawText("\\", x*40+15, y*40+15, 13, ORANGE);
+
+    //int size = MeasureText("\\", 10);
+
+    //DrawTextPro(GetFontDefault(), "\\", {x*40+10.f, y*40+15.f}, {size/2.f, size/2.f}, 22.5, 10.f, 0.f, BROWN);
+
+    DrawText("___", x*40, y*40+15, 15, BROWN);
+    DrawText("___", x*40, y*40+20, 15, BROWN);
+    DrawText("/", x*40+13, y*40+20, 15, BROWN);
+    DrawText("/", x*40+3, y*40+20, 15, BROWN);
+    DrawText("\\", x*40+7, y*40+20, 15, BROWN);
+}
+
 void drawTile(char tile, int x, int y){
     switch(tile){
         case '\0':
@@ -76,6 +94,9 @@ void drawTile(char tile, int x, int y){
             break;
         case 'I':
             drawIron(x, y);
+            break;
+        case 'C':
+            drawCampfire(x, y);
             break;
     }
 }

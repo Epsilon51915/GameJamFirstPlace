@@ -140,6 +140,10 @@ void setupWorld(Game &game)
     tile.c = 'T';
     tile.health = 100;
     tile.type = MACHINE_TILE;
+    Tile test;
+    test.c = 'C';
+    test.health = 100;
+    test.type = CAMPFIRE_TILE;
     game.world.grid[105][105] = tile;
     game.world.grid[104][105] = blank;
     game.world.grid[106][105] = blank;
@@ -205,6 +209,24 @@ void mineItem(Player &player, World &world){
                 else
                 {
                     if(!addItemToInventory(player, stick))
+                    {
+                        std::cout << "No space!" << std::endl;
+                    }
+                }
+            }
+
+            random = rand() % 100;
+            if(random < 33){
+                Item leaf;
+                leaf.type = LEAF;
+                leaf.quantity = 1;
+                if(lookForItem(player, leaf))
+                {
+                    editInventory(player, leaf);
+                }
+                else
+                {
+                    if(!addItemToInventory(player, leaf))
                     {
                         std::cout << "No space!" << std::endl;
                     }
@@ -304,6 +326,11 @@ void checkCollisions(Player& player, World& world, char dir){
     }
 }
 
+void placeItem(Player& player, World &world)
+{
+
+}
+
 void movement(Player& player, World& world){
     if(raylib::Keyboard::IsKeyPressed(KEY_W) && player.yPos != 0){
         player.yPos--;
@@ -320,6 +347,31 @@ void movement(Player& player, World& world){
     } else if(raylib::Keyboard::IsKeyPressed(KEY_I))
     {
         displayInventory(player);
+    }
+}
+
+void makeCampfire(World &world, Player &player)
+{
+    int playerX = player.xPos, playerY = player.yPos;
+    if(world.grid[104][104].type == EMPTY_TILE && playerX != 104 && playerY != 104)
+    {
+        world.grid[104][104].type = CAMPFIRE_TILE;
+        world.grid[104][104].c = 'C';
+    }
+    else if(world.grid[106][106].type == EMPTY_TILE && playerX != 106 && playerY != 106)
+    {
+        world.grid[106][106].type = CAMPFIRE_TILE;
+        world.grid[106][106].c = 'C';
+    }
+    else if(world.grid[104][106].type == EMPTY_TILE && playerX != 104 && playerY != 106)
+    {
+        world.grid[104][106].type = CAMPFIRE_TILE;
+        world.grid[104][106].c = 'C';
+    }
+    else if(world.grid[106][104].type == EMPTY_TILE && playerX != 106 && playerY != 104)
+    {
+        world.grid[106][104].type = CAMPFIRE_TILE;
+        world.grid[106][104].c = 'C';
     }
 }
 

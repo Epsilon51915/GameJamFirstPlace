@@ -129,6 +129,11 @@ int main()
                 if(!game.player.isCrafting){
                     movement(game.player, game.world);
                 }
+                if(game.player.madeCampfire)
+                {
+                    game.player.madeCampfire = false;
+                    makeCampfire(game.world, game.player);
+                }
                 break;
 
             case CREDIT:

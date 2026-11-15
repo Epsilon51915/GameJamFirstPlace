@@ -208,17 +208,26 @@ bool craft(Recipe recipe, Player& player){
 			}
 			player.pickaxeTool = recipe.resultTool;
 		} else {
-			if(lookForItem(player, recipe.resultItem))
-            {
-                editInventory(player, recipe.resultItem);
-            }
-            else
-            {
-                if(!addItemToInventory(player, recipe.resultItem))
-                {
-                    std::cout << "No space!" << std::endl;
-                }
-            }
+			if(recipe.resultItem.type == CAMPFIRE)
+			{
+				std::cout << "Made campfire" << std::endl;
+				player.madeCampfire = true;
+			}
+			else
+			{
+				if(lookForItem(player, recipe.resultItem))
+				{
+					editInventory(player, recipe.resultItem);
+				}
+				else
+				{
+					if(!addItemToInventory(player, recipe.resultItem))
+					{
+						std::cout << "No space!" << std::endl;
+					}
+				}
+			}
+			
 		}
 
 		return true;

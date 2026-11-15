@@ -50,6 +50,7 @@ struct Player
     bool isCrafting = false;
     Tool pickaxeTool;
     Tool axeTool;
+    bool madeCampfire = false;
 };
 
 /*
