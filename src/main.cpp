@@ -21,6 +21,7 @@
 
 #include "draw.hpp"
 #include "game.hpp"
+#include "recipe.hpp"
 
 enum Scenes
 {
@@ -41,7 +42,9 @@ int main()
     setupPlayer(game.player);
     setupWorld(game);
 
-    bool canMove = true;
+    std::vector<Recipe> recipes;
+    initializeStarterRecipes(recipes);
+    int craftSelection = 0;
 
     while(!window.ShouldClose())
     {
@@ -82,11 +85,24 @@ int main()
                         curScene = CREDIT;
                     }
 
-                    if(raylib::Keyboard::IsKeyDown(KEY_TAB) && canMove){
+                    if(raylib::Keyboard::IsKeyDown(KEY_TAB) && !game.player.isCrafting){
+                        //drawInventory(game.player);
                         drawInventory(game.player);
                     }
+                    if(game.player.isCrafting){
+                        if(raylib::Keyboard::IsKeyDown(KEY_SPACE)){
+                            craft(recipes[craftSelection], game.player);
+                        }
+                        if(raylib::Keyboard::IsKeyDown(KEY_TAB)){
+                            game.player.isCrafting = false;
+                        }
+                    }
+
+                    if(game.player.isCrafting){
+                        drawCraftingMenu(game.player, recipes, craftSelection);
+                    }
                 } 
-                if(canMove){
+                if(!game.player.isCrafting){
                     movement(game.player, game.world);
                 }
                 break;

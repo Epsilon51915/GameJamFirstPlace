@@ -1,4 +1,5 @@
 #include "game.hpp"
+#include "recipe.hpp"
 
 //DrawTextPro(GetFontDefault(), "/", {200, 200}, {0, 0}, (float)rot, 40, 0, RED);
 
@@ -105,5 +106,18 @@ void drawInventory(Player& player){
     {
         DrawRectangle(65, 75 + i*60, 250, 50, BLACK);
         DrawText((getItemName(player.inventory.items[i].type) + " x" + std::to_string(player.inventory.items[i].quantity)).c_str(), 65, 75 + 60 * i, 50, WHITE);
+    }
+}
+
+void drawCraftingMenu(Player& player, std::vector<Recipe> recipes, int selection){
+    drawInventory(player);
+
+    Recipe cur = recipes[selection];
+    if(cur.isTool){
+        drawCenteredText(cur.name, 50, 1000, 900);
+
+        for(int i = 0; i < cur.requirements.size(); i++){
+            DrawText((getItemName(cur.requirements[i].type) + " x" + std::to_string(cur.requirements[i].quantity)).c_str(), 450, 500 + 40 * i, 30, RED);
+        }
     }
 }
